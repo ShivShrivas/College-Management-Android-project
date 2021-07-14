@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name"> GP Madhogarh App</string>
+    <string name="government_polytechnic_madhogarh_jalaun">Government Polytechnic madhogarh jalaun</string>
+    <string name="student">Student</string>
+    <string name="staff">Staff</string>
+    <string name="Permanent_registration_number">Enter your Enrolment number</string>
+    <string name="Enter_your_prn">Enter your Enrollment here..</string>
+    <string name="Login">Login</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

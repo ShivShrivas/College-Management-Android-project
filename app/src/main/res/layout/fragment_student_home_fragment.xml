@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Student_home_fragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- TODO: Update blank fragment layout -->
+
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:layout_marginStart="9dp"
+            android:layout_marginEnd="9dp"
+            android:text="Welcome to GP Madhogarh"
+            android:textAlignment="center"
+            android:textColor="#011E68"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/imageSliderStud"
+            android:layout_width="match_parent"
+            android:layout_height="290dp"
+            android:elevation="50dp"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"
+            app:auto_cycle="true"
+            app:corner_radius="10"
+            app:delay="10"
+            app:error_image="@raw/slide1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10"
+            app:period="2000" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="15dp"
+            android:layout_marginHorizontal="15dp"
+            android:gravity="left"
+            android:padding="12dp"
+            android:text="The Government Polytechnic Madhogarh is located at Kailor Government Polytechnic Madhogarh (Jalaun)up, Jalaun, Uttar Pradesh. It was established in year 2008 and running under the aegis of Board Of Technical Education Up. It is a Government. If you're looking for more details kindly contact the relevant department of the institute."
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageSliderStud" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+
+            android:background="#011E68"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:layout_margin="5dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10sp"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginEnd="9dp"
+                    android:text="Department"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="#000C51"
+                    android:textSize="24dp"
+                    android:text="Computer Science And Engineering"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/textView12"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:textAlignment="center"
+            android:layout_margin="15dp"
+            android:text="Contact"
+            android:textSize="23dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" 49, Rampura-Jagammanpur Rd, kailor, Uttar Pradesh 285121  mob:07054641075"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="21dp"
+            android:textStyle="italic"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/textView14"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:textAlignment="center"
+            android:layout_margin="15dp"
+            android:text="Location"
+            android:textSize="23dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/textView13"/>
+
+        <ImageView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/map"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView14"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</FrameLayout>

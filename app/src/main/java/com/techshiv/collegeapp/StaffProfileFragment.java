@@ -1,0 +1,133 @@
+package com.techshiv.collegeapp;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link StaffProfileFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class StaffProfileFragment extends Fragment {
+
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+    TextView StaffNamePro,StaffMobPro,EmailStaffPro;
+    FirebaseAuth mFirebaseAuth;
+    FirebaseFirestore mFirebaseFirestor;
+    String staffId;
+    Context mContext;
+    MaterialButton logoutStaffdBtn;
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
+
+    public StaffProfileFragment() {
+        // Required empty public constructor
+    }
+
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment StaffProfileFragment.
+     */
+    // TODO: Rename and change types and number of parameters
+    public static StaffProfileFragment newInstance(String param1, String param2) {
+        StaffProfileFragment fragment = new StaffProfileFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view= inflater.inflate(R.layout.fragment_staff_profile, container, false);
+        StaffMobPro=view.findViewById(R.id.StaffMobPro);
+        EmailStaffPro=view.findViewById(R.id.EmailStaffPro);
+        StaffNamePro=view.findViewById(R.id.StaffNamePro);
+        logoutStaffdBtn=view.findViewById(R.id.logoutStaffdBtn);
+        logoutStaffdBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mFirebaseAuth.signOut();
+
+                startActivity(new Intent(getContext(),MainActivity.class));
+                Toast.makeText(getActivity(), "Logged Out... Please login", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        mFirebaseAuth=FirebaseAuth.getInstance();
+        mFirebaseFirestor=FirebaseFirestore.getInstance();
+        staffId=mFirebaseAuth.getCurrentUser().getUid();
+        AppCompatActivity appCompatActivity= new AppCompatActivity();
+        DocumentReference documentReference=mFirebaseFirestor.collection("staffs").document(staffId);
+        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()){
+                    StaffNamePro.setText(documentSnapshot.getString("StaffName"));
+                    StaffMobPro.setText(documentSnapshot.getString("StaffPhone"));
+                    EmailStaffPro.setText(documentSnapshot.getString("Staffmail"));
+
+                }
+                else {
+                    Toast.makeText(getContext(), "profile not found", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getContext(), "Failed to fetcg data", Toast.LENGTH_SHORT).show();
+            }
+        });
+//        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+//            @Override
+//            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+//                StudentNamePro.setText(value.getString("StudentName"));
+//                FatherNamePro.setText(value.getString("StudentFatherName"));
+//                EnrollmentPro.setText(value.getString("StudentEnrollment"));
+//                EmailPro.setText(value.getString("StudentMail"));
+//            }
+//        });
+        return view;
+    }
+
+}

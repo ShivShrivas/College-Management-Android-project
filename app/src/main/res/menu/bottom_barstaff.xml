@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/StaffhomeBtn"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Home"/>
+    <item
+        android:id="@+id/StaffnewsBtn"
+        android:icon="@drawable/ic_baseline_event_note_24"
+        android:title="News"/>
+    <item
+        android:id="@+id/StaffUploadBtn"
+        android:icon="@drawable/ic_notifcation"
+        android:title="Upload"/>
+    <item
+        android:id="@+id/StaffnotificationBtn"
+        android:icon="@drawable/ic_baseline_notification_important_24"
+        android:title="Notification"/>
+    <item
+        android:id="@+id/StaffprofileBtn"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:title="Profile"/>
+</menu>
